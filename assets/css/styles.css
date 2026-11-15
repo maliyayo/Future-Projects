@@ -612,3 +612,76 @@ em { font-style: normal; }
   .reel__mask { clip-path: none; }
   .grain { display: none; }
 }
+
+
+/* =========================================================
+   MIDNIGHT NAVY THEME (client-approved, Option A)
+   Main background switched from chalk to midnight navy.
+   ========================================================= */
+:root { --bg: #0A0F2C; --bg-2: #10173A; --bg-3: #19214B; --em: #8C9BFF; --bg-deep: #060918; color-scheme: dark; }
+body { background: var(--bg); color: #fff; }
+.hero { background: radial-gradient(60% 60% at 85% 20%, var(--glow-a, rgba(43,68,255,.35)), transparent 70%), radial-gradient(40% 50% at 10% 90%, var(--glow-b, rgba(255,90,54,.14)), transparent 70%), var(--bg); }
+.hero::after { background-image: linear-gradient(rgba(255,255,255,.06) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.06) 1px, transparent 1px); }
+.eyebrow { background: rgba(255,255,255,.06); border-color: rgba(255,255,255,.14); color: #fff; box-shadow: none; }
+.hero__title { color: #fff; }
+.stroke { -webkit-text-stroke-color: #fff; }
+.hero__sub { color: rgba(255,255,255,.75); }
+.hero__sub strong { color: #fff; }
+.hero__trust { border-top-color: rgba(255,255,255,.14); }
+.hero__trust span, .hero__scroll { color: rgba(255,255,255,.6); }
+.hero__scroll i { background: linear-gradient(#fff 50%, transparent 50%); background-size: 100% 200%; }
+.btn--ghost { --fg: #fff; box-shadow: inset 0 0 0 2px #fff; }
+.btn--ghost::before { background: #fff; }
+.btn--ghost:hover { color: var(--ink); }
+.nav { background: color-mix(in srgb, var(--bg) 70%, transparent); border-color: rgba(255,255,255,.1); color: #fff; }
+.nav.is-scrolled { background: color-mix(in srgb, var(--bg-2) 92%, transparent); }
+.nav__links a:hover, .nav__links a.is-active { background: #fff; color: var(--ink); }
+.nav__brand img { background: #fff; border-radius: 12px; padding: 3px; }
+.nav__burger { background: #fff; } .nav__burger span { background: var(--ink); }
+.kicker { color: rgba(255,255,255,.7); }
+.kicker span { background: var(--volt); color: var(--ink); }
+.display, .h3, .mega, .about__big { color: #fff; }
+.display em { color: var(--em); }
+.lede, .small-caps { color: rgba(255,255,255,.72); }
+.stats { border-top-color: rgba(255,255,255,.5); }
+.stat + .stat { border-left-color: rgba(255,255,255,.12); }
+.stat b { color: var(--em); } .stat:nth-child(3) b { color: #fff; } .stat:nth-child(4) b { -webkit-text-stroke-color: var(--em); }
+.stat span { color: rgba(255,255,255,.72); }
+.about { background: var(--bg-2); }
+.about__cols { color: rgba(255,255,255,.72); }
+.about__punch { color: #fff !important; }
+.checks li { background: var(--bg-3); color: rgba(255,255,255,.72); }
+.checks b { color: #fff; }
+.founder { background: var(--bg); }
+.founder__media::after { background: linear-gradient(90deg, transparent 50%, var(--bg)), linear-gradient(0deg, rgba(43,68,255,.35), transparent 60%); }
+.card--ink { background: var(--bg-3); box-shadow: inset 0 0 0 1px rgba(255,255,255,.1), 0 -20px 50px -30px rgba(0,0,0,.6); }
+.value { background: rgba(255,255,255,.08); }
+.value__item { background: var(--bg-2); }
+.value__item b { color: #fff; } .value__item p { color: rgba(255,255,255,.68); }
+.value__arrow.up { background: rgba(124,140,255,.16); color: var(--em); }
+.offer__col { background: var(--bg-2); border-color: rgba(255,255,255,.1); color: #fff; }
+.offer__col li { border-color: rgba(255,255,255,.1); }
+.offer__col:nth-child(3)::before { background: var(--coral-2); }
+.health { background: var(--bg); }
+.regimen__group { background: var(--bg-2); border-color: rgba(255,255,255,.1); }
+.regimen h3 { color: #fff; }
+.regimen li { background: var(--bg-3); color: #fff; }
+.regimen__group:nth-child(3) h3 span { background: #fff; color: var(--ink); }
+.marketing { background: var(--bg-2); }
+.mega__row--outline { -webkit-text-stroke-color: var(--em); }
+.brands__row { background: var(--bg-3); }
+.marketing__copy > p { color: rgba(255,255,255,.72); }
+.deals li { background: var(--bg-3); color: #fff; }
+.ph--float { border-color: var(--bg-2); }
+.reel { background: var(--bg-2); }
+.staff { background: var(--bg); }
+.member h3 { color: #fff; } .member p { color: rgba(255,255,255,.6); }
+.form { background: var(--bg); }
+.footer { background: var(--bg-deep, #060918); }
+.cursor__ring { border-color: var(--em); }
+.nav__brand-text { color: #fff; }
+::selection { background: var(--volt); color: var(--ink); }
+@media (max-width: 960px) {
+  .founder__media::after { background: linear-gradient(180deg, transparent 50%, var(--bg)); }
+}
+.brands__row--rev { background: var(--volt); }

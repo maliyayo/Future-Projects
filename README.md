@@ -6,10 +6,11 @@ A complete redesign of iathleticg.com. It is a static site with no build step: o
 python3 -m http.server 8080   # then visit http://localhost:8080
 ```
 
-## Design direction: "Daylight Stadium"
+## Design direction: "Midnight Stadium"
 | Token | Hex | Use |
 |---|---|---|
-| Chalk | `#F4F1EA` | Page background (a bright, light break from the old all-dark site) |
+| Midnight navy | `#0A0F2C` / `#10173A` / `#19214B` | Page background and raised surfaces (client-approved Option A) |
+| Chalk | `#F4F1EA` | Light accents, hero cards |
 | Midnight ink | `#0A0F2C` | Type, dark sections |
 | Electric cobalt | `#2B44FF` | Primary brand color, echoes the logo blue |
 | Signal coral | `#FF5A36` | Every conversion CTA, echoes the logo red |
