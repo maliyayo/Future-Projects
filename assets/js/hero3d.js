@@ -29,10 +29,11 @@ function init() {
   const camera = new THREE.PerspectiveCamera(35, 1, 0.1, 100);
   camera.position.set(0, 0, 9);
 
-  const COBALT = new THREE.Color('#2b44ff');
-  const CORAL = new THREE.Color('#ff5a36');
-  const VOLT = new THREE.Color('#dcff4f');
-  const SKY = new THREE.Color('#a9c4ff');
+  // Exact IAG logo colors: royal blue + red, with the logo's white outline
+  const LOGO_BLUE = new THREE.Color('#203878');
+  const LOGO_RED = new THREE.Color('#e81828');
+  const WHITE = new THREE.Color('#ffffff');
+  const BLUE_LIT = new THREE.Color('#203878').multiplyScalar(1.15); // same hue, lifted so it reads on navy
 
   /* ---- Infinity curve (lemniscate of Bernoulli with a 3D twist) ---- */
   class Lemniscate extends THREE.Curve {
@@ -58,16 +59,16 @@ function init() {
   const count = tubeGeo.attributes.position.count;
   for (let i = 0; i < count; i++) {
     const seg = Math.floor(i / (radialSegments + 1)) / tubularSegments;
-    const k = (Math.sin(seg * Math.PI * 2) + 1) / 2;
-    tmp.copy(COBALT).lerp(CORAL, k);
-    const flare = Math.max(0, Math.sin(seg * Math.PI * 6)) ** 6;
-    tmp.lerp(VOLT, flare * 0.55);
+    // Left loop blue, right loop red (like the logo), crisp blend at the crossover
+    const x = Math.cos(seg * Math.PI * 2);
+    const k = THREE.MathUtils.smoothstep(x, -0.18, 0.18);
+    tmp.copy(BLUE_LIT).lerp(LOGO_RED, k);
     colors.push(tmp.r, tmp.g, tmp.b);
   }
   tubeGeo.setAttribute('color', new THREE.Float32BufferAttribute(colors, 3));
   const tubeMat = new THREE.MeshPhysicalMaterial({
-    vertexColors: true, metalness: 0.55, roughness: 0.18, clearcoat: 1, clearcoatRoughness: 0.06,
-    iridescence: 0.35, iridescenceIOR: 1.4, envMapIntensity: 1.1,
+    vertexColors: true, metalness: 0.25, roughness: 0.22, clearcoat: 1, clearcoatRoughness: 0.05,
+    envMapIntensity: 0.45,
   });
   const ribbon = new THREE.Mesh(tubeGeo, tubeMat);
   group.add(ribbon);
@@ -75,19 +76,19 @@ function init() {
   // Thin orbit wire, slightly offset, for depth
   const wire = new THREE.Mesh(
     new THREE.TubeGeometry(new Lemniscate(2.75), 400, 0.018, 8, true),
-    new THREE.MeshBasicMaterial({ color: COBALT, transparent: true, opacity: 0.55 })
+    new THREE.MeshBasicMaterial({ color: WHITE, transparent: true, opacity: 0.45 })
   );
   wire.rotation.set(0.35, 0.2, 0.15);
   group.add(wire);
   const wire2 = wire.clone();
-  wire2.material = new THREE.MeshBasicMaterial({ color: CORAL, transparent: true, opacity: 0.45 });
+  wire2.material = new THREE.MeshBasicMaterial({ color: LOGO_RED, transparent: true, opacity: 0.55 });
   wire2.rotation.set(-0.3, -0.25, -0.1);
   wire2.scale.setScalar(0.92);
   group.add(wire2);
 
   // Comet racing along the loop + its light
-  const comet = new THREE.Mesh(new THREE.SphereGeometry(0.13, 32, 32), new THREE.MeshBasicMaterial({ color: VOLT }));
-  const cometLight = new THREE.PointLight(VOLT, 6, 4, 1.6);
+  const comet = new THREE.Mesh(new THREE.SphereGeometry(0.13, 32, 32), new THREE.MeshBasicMaterial({ color: WHITE }));
+  const cometLight = new THREE.PointLight(WHITE, 5, 4, 1.6);
   comet.add(cometLight);
   group.add(comet);
   // Trail
@@ -95,7 +96,7 @@ function init() {
   const trailGeo = new THREE.BufferGeometry();
   const trailPos = new Float32Array(TRAIL * 3);
   const trailCol = new Float32Array(TRAIL * 3);
-  for (let i = 0; i < TRAIL; i++) { const f = 1 - i / TRAIL; tmp.copy(VOLT).lerp(SKY, 1 - f); trailCol.set([tmp.r * f, tmp.g * f, tmp.b * f], i * 3); }
+  for (let i = 0; i < TRAIL; i++) { const f = 1 - i / TRAIL; tmp.copy(WHITE).lerp(LOGO_RED, 1 - f); trailCol.set([tmp.r * f, tmp.g * f, tmp.b * f], i * 3); }
   trailGeo.setAttribute('position', new THREE.BufferAttribute(trailPos, 3));
   trailGeo.setAttribute('color', new THREE.BufferAttribute(trailCol, 3));
   const trail = new THREE.Points(trailGeo, new THREE.PointsMaterial({ size: 0.12, vertexColors: true, transparent: true, depthWrite: false, blending: THREE.AdditiveBlending }));
@@ -108,7 +109,7 @@ function init() {
   for (let i = 0; i < P; i++) {
     const r = 2 + Math.random() * 5.5, th = Math.random() * Math.PI * 2, ph = Math.acos(2 * Math.random() - 1);
     pPos.set([r * Math.sin(ph) * Math.cos(th), r * Math.sin(ph) * Math.sin(th) * 0.7, r * Math.cos(ph) * 0.6], i * 3);
-    const c = [COBALT, CORAL, COBALT, SKY][i % 4];
+    const c = [BLUE_LIT, LOGO_RED, WHITE, BLUE_LIT][i % 4];
     pCol.set([c.r, c.g, c.b], i * 3);
     pSeed[i] = Math.random() * 100;
   }
@@ -120,7 +121,7 @@ function init() {
   // Lights
   scene.add(new THREE.AmbientLight(0xffffff, 0.35));
   const key = new THREE.DirectionalLight(0xffffff, 2.2); key.position.set(3, 4, 6); scene.add(key);
-  const rim = new THREE.DirectionalLight(CORAL, 2.5); rim.position.set(-5, -2, -3); scene.add(rim);
+  const rim = new THREE.DirectionalLight(BLUE_LIT, 2.5); rim.position.set(-5, -2, -3); scene.add(rim);
 
   /* ---- Layout: anchor ribbon to the video frame so it "breaks out" of it ---- */
   const anchor = new THREE.Vector3();
