@@ -6,14 +6,15 @@ import { useState } from "react";
 import { Plus } from "lucide-react";
 import { MaskLines, Reveal, ease } from "../motion";
 
-const pillars = [
+const pillars: { n: string; title: string; lede: string; points: string[]; image: string; alt: string; focus?: string }[] = [
   {
     n: "01",
     title: "Representation & Contracts",
     lede: "Aggressive contract negotiation, roster positioning and long-term career mapping.",
     points: ["Contract negotiations & renegotiations", "Draft preparation, combine & pro-day strategy", "Grievances, hearings & appeals", "Legal representation & roster positioning"],
-    image: "/img/contract-handshake.webp",
-    alt: "A handshake over a signed contract",
+    image: "/img/contract-signing.webp",
+    alt: "An advisor guiding a client's signature on a contract with a gold pen",
+    focus: "62% 50%",
   },
   {
     n: "02",
@@ -88,7 +89,7 @@ export function Pillars() {
                             ))}
                           </ul>
                           <div className="relative mt-6 aspect-[16/10] overflow-hidden lg:hidden">
-                            <Image src={p.image} alt={p.alt} fill sizes="100vw" className="object-cover" />
+                            <Image src={p.image} alt={p.alt} fill sizes="100vw" className="object-cover" style={{ objectPosition: p.focus }} />
                           </div>
                         </div>
                       </motion.div>
@@ -105,7 +106,7 @@ export function Pillars() {
                 <motion.div key={open} className="absolute inset-0"
                   initial={{ clipPath: "inset(100% 0 0 0)", scale: 1.15 }} animate={{ clipPath: "inset(0% 0 0 0)", scale: 1 }} exit={{ opacity: 0.4 }}
                   transition={{ duration: 1, ease }}>
-                  <Image src={pillars[open].image} alt={pillars[open].alt} fill sizes="40vw" className="object-cover" />
+                  <Image src={pillars[open].image} alt={pillars[open].alt} fill sizes="40vw" className="object-cover" style={{ objectPosition: pillars[open].focus }} />
                   <div className="absolute inset-0 bg-[linear-gradient(180deg,transparent_50%,rgba(9,9,11,0.8))]" />
                 </motion.div>
               </AnimatePresence>
