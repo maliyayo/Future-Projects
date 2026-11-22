@@ -2,7 +2,7 @@
 
 An editorial, luxury sports-agency site for Infinity Athletic Group (iathleticg.com), led by NFLPA Certified Contract Advisor Shaheed Samuel in Miami, FL.
 
-**Stack:** Next.js 15 (App Router) · React 19 · Tailwind CSS 4 · Framer Motion 12 · Three.js (hero ribbon) · Lucide icons. Deploys on Vercel with no extra configuration.
+**Stack:** Next.js 15 (App Router) · React 19 · Tailwind CSS 4 · Framer Motion 12 · Lucide icons. Deploys on Vercel with no extra configuration.
 
 ```bash
 npm install
@@ -27,7 +27,6 @@ npm run build    # production build; all routes are statically prerendered
 | Alabaster | `#F4F4F5` | Primary text |
 | Slate | `#9CA3AF` | Secondary text |
 | Champagne gold | `#C8A96E` (`#9C8048` on light) | Index numbers, borders, hovers, CTAs |
-| Logo blue / red | `#203878` / `#E81828` | 3D infinity ribbon only |
 
 Type: **Cormorant Garamond** (display and quotes), **Inter** (body), **JetBrains Mono** with tabular numerals (index numbers and stats).
 

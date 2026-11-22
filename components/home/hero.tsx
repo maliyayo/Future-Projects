@@ -1,14 +1,11 @@
 "use client";
 
 import Link from "next/link";
-import dynamic from "next/dynamic";
 import { motion, useScroll, useTransform, useReducedMotion } from "framer-motion";
 import { useRef } from "react";
 import { ArrowRight, ArrowDown } from "lucide-react";
 import { MaskLines, Magnetic, ease } from "../motion";
 import { useInquiry } from "../inquiry";
-
-const InfinityRibbon = dynamic(() => import("../infinity-ribbon"), { ssr: false });
 
 export function Hero() {
   const ref = useRef<HTMLElement>(null);
@@ -28,8 +25,6 @@ export function Hero() {
       </motion.div>
       <div className="absolute inset-0 -z-10 bg-[linear-gradient(180deg,rgba(9,9,11,0.55)_0%,rgba(9,9,11,0.35)_40%,rgba(9,9,11,0.96)_100%)]" />
       <div className="absolute inset-0 -z-10 bg-[radial-gradient(80%_60%_at_0%_100%,rgba(9,9,11,0.9),transparent)]" />
-
-      <InfinityRibbon className="pointer-events-none absolute right-[-8%] top-[8%] -z-[5] hidden h-[78%] w-[58%] opacity-90 md:block" />
 
       <motion.div style={reduce ? undefined : { opacity: fade }} className="wrap relative pb-16 pt-40 sm:pb-20">
         <motion.p initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.9, ease, delay: 0.5 }} className="eyebrow mb-8 flex items-center gap-3">
