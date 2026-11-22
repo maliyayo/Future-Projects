@@ -2,8 +2,8 @@
 export const founder = {
   name: "Shaheed Samuel",
   title: "Founder · NFLPA Certified Contract Advisor since 2012",
-  photo: "/img/shaheed-samuel.webp",
-  photoAlt: "Shaheed Samuel, founder of Infinity Athletic Group, in a navy suit with a gold tie",
+  photo: "/img/shaheed-samuel-portrait.webp",
+  photoAlt: "Shaheed Samuel, founder of Infinity Athletic Group, standing in a bright office lobby in a navy suit and gold tie",
   tagline: "Unboundedly formulating a blueprint for your professional athletic career and beyond.",
   bio: [
     "Shaheed Samuel based on extensive market research, he found that there's a need for sports agents who are passionate, honest and dependable. He truly believes that his faith, wisdom, moral character, drive, work ethic and sense of loyalty, sets him apart from all competitors.",
