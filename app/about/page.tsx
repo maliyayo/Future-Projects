@@ -20,13 +20,6 @@ const compare = [
   { k: "Standard", iag: "Never compromising ethics for a deal", big: "Varies by agent" },
 ];
 
-const team = [
-  { name: "Simone Maxwell", role: "Director of PR & Events", img: "/img/staff-simone-maxwell.webp" },
-  { name: "Robert Wilson", role: "Assistant Director of Marketing", img: "/img/staff-robert-wilson.webp" },
-  { name: "Zachariah Evangelista", role: "Attorney", img: "/img/staff-zachariah-evangelista.webp" },
-  { name: "Lashan Coglin", role: "Director of Client Services", img: "/img/staff-lashan-coglin.webp" },
-  { name: "Tyrone White", role: "Dir. of Marketing & Endorsements", img: "/img/staff-tyrone-white.webp" },
-];
 
 export default function AboutPage() {
   return (
@@ -111,26 +104,27 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section className="border-t hairline bg-carbon py-24 sm:py-32" aria-labelledby="team">
+      <section className="border-t hairline bg-carbon py-24 sm:py-32" aria-labelledby="go-deeper">
         <div className="wrap">
-          <div className="mb-14 flex flex-wrap items-end justify-between gap-6">
-            <div>
-              <p className="eyebrow mb-6">The Team</p>
-              <h2 id="team" className="display text-[clamp(40px,5vw,80px)]">In your <em className="text-gold">corner.</em></h2>
-            </div>
-            <p className="max-w-sm text-slate">PR, marketing, legal and client services professionals working one plan: yours.</p>
-          </div>
-          <ul className="grid grid-cols-2 gap-6 md:grid-cols-3 lg:grid-cols-5">
-            {team.map((t, i) => (
-              <Reveal as="li" key={t.name} delay={i * 0.06} className="group">
-                <div className="relative aspect-square overflow-hidden bg-graphite">
-                  <Image src={t.img} alt={t.name} fill sizes="(min-width:1024px) 20vw, 50vw" className="object-cover grayscale transition duration-700 group-hover:scale-105 group-hover:grayscale-0" />
+          <p className="eyebrow mb-6">Go deeper</p>
+          <h2 id="go-deeper" className="display mb-12 text-[clamp(40px,5vw,80px)]">The people <em className="text-gold">behind IAG.</em></h2>
+          <div className="grid gap-6 md:grid-cols-2">
+            {[
+              { href: "/about/founder", k: "01 · Founder Story", t: "It started with a better standard.", d: "Why Shaheed Samuel built a boutique agency around personalized attention.", img: "/img/stadium-night.webp" },
+              { href: "/team", k: "02 · Meet the Team", t: "The people behind every client.", d: "PR, marketing, legal and client services, working one plan.", img: "/img/staff-lashan-coglin.webp" },
+            ].map((c) => (
+              <Link key={c.href} href={c.href} className="group relative block min-h-[340px] overflow-hidden border hairline">
+                <Image src={c.img} alt="" fill sizes="(min-width:768px) 50vw, 100vw" className="object-cover opacity-30 grayscale transition duration-[1200ms] group-hover:scale-105 group-hover:opacity-45" />
+                <div className="absolute inset-0 bg-[linear-gradient(180deg,transparent,rgba(9,9,11,0.95))]" />
+                <div className="absolute inset-x-8 bottom-8">
+                  <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-gold">{c.k}</p>
+                  <h3 className="display mt-4 text-4xl">{c.t}</h3>
+                  <p className="mt-3 text-slate">{c.d}</p>
+                  <span className="mt-6 inline-flex items-center gap-2 text-sm">Read more <ArrowRight size={16} className="text-gold transition-transform duration-500 group-hover:translate-x-1" /></span>
                 </div>
-                <h3 className="mt-4 text-alabaster">{t.name}</h3>
-                <p className="text-sm text-slate">{t.role}</p>
-              </Reveal>
+              </Link>
             ))}
-          </ul>
+          </div>
         </div>
       </section>
 

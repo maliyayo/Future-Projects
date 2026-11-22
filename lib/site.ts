@@ -9,12 +9,46 @@ export const site = {
   tagline: "On the field. Off the field. And beyond.",
 };
 
-export const nav = [
-  { label: "Roster", href: "/#roster" },
-  { label: "What We Do", href: "/#what-we-do" },
+export type NavItem = { label: string; href: string; children?: { label: string; href: string; note?: string }[] };
+
+export const nav: NavItem[] = [
+  {
+    label: "Roster",
+    href: "/#roster",
+    children: [
+      { label: "Quinton Dunbar", href: "/athletes/quinton-dunbar", note: "Cornerback · Washington" },
+      { label: "Rashad Greene", href: "/athletes/rashad-greene", note: "Wide Receiver · Jacksonville" },
+    ],
+  },
+  {
+    label: "Four Pillars",
+    href: "/#what-we-do",
+    children: [
+      { label: "Representation & Contracts", href: "/pillars/representation" },
+      { label: "Brand & Content", href: "/pillars/brand" },
+      { label: "Community & Legacy", href: "/pillars/community" },
+      { label: "Concierge & Wealth", href: "/pillars/concierge" },
+    ],
+  },
   { label: "Case Studies", href: "/#case-studies" },
-  { label: "About", href: "/about" },
-  { label: "Contact", href: "/#contact" },
+  {
+    label: "Partnerships",
+    href: "/partnerships",
+    children: [
+      { label: "Brands & Sponsors", href: "/partnerships#brands" },
+      { label: "Advisors & Professionals", href: "/partnerships#advisors" },
+      { label: "Families & Prospects", href: "/partnerships#families" },
+    ],
+  },
+  {
+    label: "About",
+    href: "/about",
+    children: [
+      { label: "Founder Story", href: "/about/founder" },
+      { label: "Meet the Team", href: "/team" },
+      { label: "Our Approach", href: "/about" },
+    ],
+  },
 ];
 
 export const inquiryTypes = [

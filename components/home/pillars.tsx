@@ -3,44 +3,10 @@
 import Image from "next/image";
 import { AnimatePresence, motion } from "framer-motion";
 import { useState } from "react";
-import { Plus } from "lucide-react";
+import Link from "next/link";
+import { ArrowRight, Plus } from "lucide-react";
+import { pillars } from "@/lib/pillars";
 import { MaskLines, Reveal, ease } from "../motion";
-
-const pillars: { n: string; title: string; lede: string; points: string[]; image: string; alt: string; focus?: string }[] = [
-  {
-    n: "01",
-    title: "Representation & Contracts",
-    lede: "Aggressive contract negotiation, roster positioning and long-term career mapping.",
-    points: ["Contract negotiations & renegotiations", "Draft preparation, combine & pro-day strategy", "Grievances, hearings & appeals", "Legal representation & roster positioning"],
-    image: "/img/contract-signing.webp",
-    alt: "An advisor guiding a client's signature on a contract with a gold pen",
-    focus: "62% 50%",
-  },
-  {
-    n: "02",
-    title: "Brand & Content Engine",
-    lede: "Endorsements, NIL and commercial deals, media production and personal brand leverage.",
-    points: ["Sponsorships, endorsements & paid promotions", "Social media monetization & content", "Public relations, media relations & coaching", "Image consulting & brand building"],
-    image: "/img/basketball.webp",
-    alt: "A player rising for a shot in front of a packed arena",
-  },
-  {
-    n: "03",
-    title: "Community & Legacy",
-    lede: "Youth camps, charitable foundations, hometown activations and high-equity appearances.",
-    points: ["Youth camps & clinics", "Charitable organizations & foundations", "Hometown & alma-mater activations", "Appearances & speaking engagements"],
-    image: "/img/line-under-lights.webp",
-    alt: "Football players lined up under stadium lights at dusk",
-  },
-  {
-    n: "04",
-    title: "Concierge & Wealth Infrastructure",
-    lede: "24/7 relocation, travel, tax and entity coordination, and post-career business transition.",
-    points: ["Wealth management & financial planning", "Tax planning & entity coordination", "Relocation, travel & medical coordination", "Post-career counseling & business transition"],
-    image: "/img/helmet-night.webp",
-    alt: "A football helmet resting on the field at night",
-  },
-];
 
 export function Pillars() {
   const [open, setOpen] = useState(0);
@@ -84,10 +50,13 @@ export function Pillars() {
                         <div className="pb-8 pl-[calc(1.5rem+2ch)]">
                           <p className="mb-5 max-w-lg text-lg text-slate-dark">{p.lede}</p>
                           <ul className="grid gap-2 sm:grid-cols-2">
-                            {p.points.map((pt) => (
+                            {p.included.flatMap((g) => g.items).slice(0, 4).map((pt) => (
                               <li key={pt} className="flex gap-3 text-sm text-obsidian/80"><span className="mt-2 h-px w-4 shrink-0 bg-gold-deep" />{pt}</li>
                             ))}
                           </ul>
+                          <Link href={`/pillars/${p.slug}`} className="group mt-6 inline-flex items-center gap-2 text-sm font-medium text-obsidian">
+                            <span className="link-underline">Explore {p.short}</span> <ArrowRight size={16} className="text-gold-deep transition-transform duration-500 group-hover:translate-x-1" />
+                          </Link>
                           <div className="relative mt-6 aspect-[16/10] overflow-hidden lg:hidden">
                             <Image src={p.image} alt={p.alt} fill sizes="100vw" className="object-cover" style={{ objectPosition: p.focus }} />
                           </div>

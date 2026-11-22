@@ -4,7 +4,8 @@ import Link from "next/link";
 import Image from "next/image";
 import { ArrowUpRight, MapPin, Mail } from "lucide-react";
 import { athletes } from "@/lib/athletes";
-import { nav, site } from "@/lib/site";
+import { site } from "@/lib/site";
+import { pillars } from "@/lib/pillars";
 import { useInquiry } from "./inquiry";
 import { Magnetic } from "./motion";
 
@@ -26,20 +27,20 @@ export function Footer() {
             </Magnetic>
           </div>
 
-          <div className="grid grid-cols-2 gap-10 text-sm">
-            <div>
-              <p className="eyebrow mb-5">Explore</p>
-              <ul className="grid gap-3">
-                {nav.map((n) => <li key={n.href}><Link className="link-underline text-alabaster/80 hover:text-alabaster" href={n.href}>{n.label}</Link></li>)}
-              </ul>
-            </div>
-            <div>
-              <p className="eyebrow mb-5">Roster</p>
-              <ul className="grid gap-3">
-                {athletes.map((a) => <li key={a.slug}><Link className="link-underline text-alabaster/80 hover:text-alabaster" href={`/athletes/${a.slug}`}>{a.name}</Link></li>)}
-              </ul>
-            </div>
-            <div className="col-span-2 grid gap-4 border-t hairline pt-8 sm:grid-cols-2">
+          <div className="grid grid-cols-2 gap-10 text-sm sm:grid-cols-3">
+            {[
+              { h: "Firm", links: [["About", "/about"], ["Founder Story", "/about/founder"], ["Meet the Team", "/team"], ["Partnerships", "/partnerships"], ["Case Studies", "/#case-studies"], ["Contact", "/#contact"]] },
+              { h: "Four Pillars", links: pillars.map((p) => [p.short, `/pillars/${p.slug}`]) },
+              { h: "Roster", links: athletes.map((a) => [a.name, `/athletes/${a.slug}`]) },
+            ].map((col) => (
+              <div key={col.h}>
+                <p className="eyebrow mb-5">{col.h}</p>
+                <ul className="grid gap-3">
+                  {col.links.map(([l, h]) => <li key={h}><Link className="link-underline text-alabaster/80 hover:text-alabaster" href={h}>{l}</Link></li>)}
+                </ul>
+              </div>
+            ))}
+            <div className="col-span-2 grid gap-4 border-t hairline pt-8 sm:col-span-3 sm:grid-cols-2">
               <a href={site.mapsUrl} target="_blank" rel="noopener noreferrer" className="flex gap-3 text-alabaster/80 hover:text-alabaster">
                 <MapPin size={18} className="mt-0.5 shrink-0 text-gold" />
                 <span>Headquarters<br />{site.address.street}<br />{site.address.city}, {site.address.region}</span>
