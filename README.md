@@ -1,38 +1,51 @@
-# Infinity Athletic Group (IAG): Website Redesign
+# Infinity Athletic Group (IAG): Website v2
 
-A complete redesign of iathleticg.com. It is a static site with no build step: open `index.html` or serve the folder.
+An editorial, luxury sports-agency site for Infinity Athletic Group (iathleticg.com), led by NFLPA Certified Contract Advisor Shaheed Samuel in Miami, FL.
+
+**Stack:** Next.js 15 (App Router) · React 19 · Tailwind CSS 4 · Framer Motion 12 · Three.js (hero ribbon) · Lucide icons. Deploys on Vercel with no extra configuration.
 
 ```bash
-python3 -m http.server 8080   # then visit http://localhost:8080
+npm install
+npm run dev      # http://localhost:3000
+npm run build    # production build; all routes are statically prerendered
 ```
 
-## Design direction: "Midnight Stadium"
+## Routes
+| Route | What it is |
+|---|---|
+| `/` | Hub: full-bleed video hero, pillars bar, roster showcase (`01.` / `02.`), four disciplines (`01`–`04`), case studies (modals), founder pull-quote, brand & partnership inquiry |
+| `/athletes/quinton-dunbar` | Athlete profile: hero, vitals strip, career narrative, stats tabs (Pro / College / Testing / Timeline scrubber), brand & community, media & press, booking bar, next-athlete switcher |
+| `/athletes/rashad-greene` | Same structure |
+| `/about` | IAG story, Shaheed Samuel, boutique vs. mega-agency, team |
+| `/athletes` | Redirects to `/#roster` |
+
+## Design system: "Obsidian Editorial"
 | Token | Hex | Use |
 |---|---|---|
-| Midnight navy | `#0A0F2C` / `#10173A` / `#19214B` | Page background and raised surfaces (client-approved Option A) |
-| Chalk | `#F4F1EA` | Light accents, hero cards |
-| Midnight ink | `#0A0F2C` | Type, dark sections |
-| Electric cobalt | `#2B44FF` | Primary brand color, echoes the logo blue |
-| Signal coral | `#FF5A36` | Every conversion CTA, echoes the logo red |
-| Volt | `#DCFF4F` | Micro-accents, energy |
+| Obsidian / Carbon | `#09090B` / `#0F1115` | Canvas |
+| Paper | `#F8F8F6` | Editorial light sections |
+| Alabaster | `#F4F4F5` | Primary text |
+| Slate | `#9CA3AF` | Secondary text |
+| Champagne gold | `#C8A96E` (`#9C8048` on light) | Index numbers, borders, hovers, CTAs |
+| Logo blue / red | `#203878` / `#E81828` | 3D infinity ribbon only |
 
-Type: **Archivo** (variable width axis, for condensed sports headlines), **Manrope** (body), **JetBrains Mono** (labels).
+Type: **Cormorant Garamond** (display and quotes), **Inter** (body), **JetBrains Mono** with tabular numerals (index numbers and stats).
 
-## What's in it
-- **3D hero**: a Three.js iridescent infinity ribbon (from the logo mark) with a comet racing along it and a reactive particle field. It breaks out of the video frame and follows the cursor.
-- **Video**: hero reel montage, a yard-line background for pre-draft, and a crowd reel inside a scroll-expanding mask.
-- **Motion**: preloader, word-by-word reveals, scroll-scrubbed text, stacking Mission/Vision/Philosophy cards, a pinned horizontal combine-drill gallery with animated SVG drill diagrams, velocity-skewed ticker, brand marquees, parallax and animated counters.
-- **Cursor**: custom dot and ring with contextual labels (Watch, Proof, Train…), magnetic buttons, and 3D tilt cards.
-- **Conversion**: a direct-response copy layer (hook, subhead, benefit bullets, value equation, offer stack, risk reversal), a sticky mobile CTA dock, and a 2-step lead form.
-- Respects `prefers-reduced-motion`. Without WebGL or JS the content still renders.
+## Where content lives
+- `lib/athletes.ts`: all athlete copy, stats and timelines. See `RESEARCH.md` before changing any fact.
+- `lib/site.ts`: address, email, nav and inquiry types.
+- `components/home/*`, `components/athlete/*`: page sections.
+
+## Inquiry forms
+Both forms (the homepage form and the slide-in drawer) validate input, then open the visitor's email app with a pre-filled message to `shaheed@iathleticg.com`. Before launch, connect a form backend (Formspree, Resend, HubSpot, etc.) so leads are captured even if the visitor never presses send.
 
 ## Before launch (client to confirm)
-1. **Lead form**: it currently opens the visitor's email app pre-filled to `shaheed@iathleticg.com`. Connect it to a real form backend (Formspree, HubSpot, a CRM) to capture leads reliably.
-2. **Social links**: Facebook / X / YouTube point to `#`. The live site didn't expose the URLs.
-3. **New marketing claims** need client sign-off: "free 30-minute Career Blueprint Call", "Now Recruiting 2026–27", "IAG is selective / limited number of athletes".
-4. **Founder photo**: Shaheed Samuel is shown as an "SS" monogram. Swap in a headshot if available.
-5. **Typos fixed from the original copy**: "Dumbar" → Dunbar, "Combine-Specic" → Specific, "Wonderlich" → Wonderlic.
+1. **Representation wording.** The site calls both athletes "IAG Client". The NFLPA profile shows no current contracts, and a 2021 ESPN report named a different agency for Dunbar's Detroit deal. Confirm the athletes approve being featured and that IAG can field appearance and endorsement inquiries for them.
+2. **Street address.** 1037 NW 3rd Ave was supplied by the client; public records only confirm ZIP 33136.
+3. **Testimonial.** The pull-quote band uses Shaheed's own words. Add a real, approved client quote when available. Never invent one.
+4. **Photos.** The athlete photos are the 2015-era banner crops from the old site (about 490px tall). Supply high-resolution portraits and action shots for best results.
+5. **Team.** Staff names and titles come from the 2015 site; confirm they're current.
+6. **Socials.** No verified athlete or agency social handles were found; profile links point to ESPN, NFL.com and school pages.
 
 ## Media credits
-- Client photos (athletes, staff, logo) are from the existing iathleticg.com, used with the owner's permission.
-- Stock video from [Mixkit](https://mixkit.co) (Mixkit License). Stock photos from [Pexels](https://www.pexels.com) (Pexels License).
+Client photos and logo from iathleticg.com (used with the owner's permission). Video from Mixkit (Mixkit License). Photos from Pexels (Pexels License).
