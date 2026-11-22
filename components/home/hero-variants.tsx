@@ -66,7 +66,7 @@ export function HeroSplit() {
 export function HeroPortal() {
   return (
     <section className="relative isolate flex min-h-[100svh] flex-col items-center overflow-hidden bg-obsidian pt-28 text-center" aria-label="Introduction">
-      <span aria-hidden className="pointer-events-none absolute top-[12%] -z-10 select-none font-serif text-[30vw] leading-none tracking-[-0.04em] text-transparent [-webkit-text-stroke:1px_rgba(200,169,110,0.28)]">Infinity</span>
+      <span aria-hidden className="pointer-events-none absolute top-[9%] -z-10 select-none font-serif text-[30vw] leading-none tracking-[-0.04em] text-transparent [-webkit-text-stroke:1px_rgba(200,169,110,0.16)]">Infinity</span>
       <motion.div initial={{ scale: 0.6, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} transition={{ duration: 1.6, ease }}
         className="relative mt-6 h-[38vh] w-[min(420px,72vw)] overflow-hidden rounded-t-full border border-gold/40">
         <Video />
@@ -102,7 +102,7 @@ export function HeroRoster() {
             </Link>
           </motion.div>
         ))}
-        <span className="absolute inset-y-0 left-1/2 w-px bg-gold/40" />
+        <span className="absolute inset-y-0 left-1/2 hidden w-px bg-gold/40 sm:block" />
       </div>
       <div className="wrap flex min-h-[100svh] flex-col items-center justify-center pb-24 pt-32 text-center">
         <p className="eyebrow mb-8">The IAG Roster</p>
@@ -120,6 +120,7 @@ export function HeroRoster() {
 export function HeroLight() {
   return (
     <section className="relative bg-paper pt-32 text-obsidian" aria-label="Introduction">
+      <div aria-hidden className="absolute inset-x-0 top-0 h-[84px] bg-obsidian" />
       <div className="wrap grid gap-10 pb-12 lg:grid-cols-[1.3fr_0.7fr] lg:items-end">
         <h1 className="display text-[clamp(52px,8.6vw,148px)]">
           <MaskLines delay={0.3} lines={["The agency", <>built around <em className="text-gold-deep">you.</em></>]} />
