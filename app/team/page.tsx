@@ -5,6 +5,8 @@ import { ArrowRight } from "lucide-react";
 import { PageHero } from "@/components/page-parts";
 import { Reveal } from "@/components/motion";
 import { team } from "@/lib/team";
+import { founder } from "@/lib/founder";
+import { FounderPortrait } from "@/components/founder-portrait";
 
 export const metadata: Metadata = {
   title: "Meet the Team",
@@ -22,15 +24,13 @@ export default function TeamPage() {
           <p className="eyebrow mb-8 !text-gold-deep">Founder</p>
           <Reveal>
             <Link href="/about/founder" className="group grid overflow-hidden border hairline-dark md:grid-cols-[0.8fr_1.2fr]">
-              <div className="relative grid min-h-[320px] place-items-center bg-obsidian">
-                <Image src="/img/stadium-night.webp" alt="" fill sizes="40vw" className="object-cover opacity-40 transition-transform duration-[1400ms] group-hover:scale-105" />
-                <span className="display relative text-[140px] leading-none text-gold">SS</span>
-              </div>
+              <FounderPortrait className="min-h-[460px] transition-transform duration-700" />
               <div className="flex flex-col justify-center p-8 sm:p-12">
                 <h2 className="display text-[clamp(40px,4.6vw,72px)]">Shaheed <em className="text-gold-deep">Samuel</em></h2>
-                <p className="mt-2 font-mono text-[11px] uppercase tracking-[0.2em] text-slate-dark">Founder · NFLPA Certified Contract Advisor since 2012</p>
+                <p className="mt-2 font-mono text-[11px] uppercase tracking-[0.2em] text-slate-dark">{founder.title}</p>
+                <p className="mt-6 font-serif text-2xl italic leading-snug">&ldquo;{founder.tagline}&rdquo;</p>
                 <p className="mt-6 max-w-xl text-[17px] leading-[1.75] text-obsidian/75">
-                  Shaheed founded Infinity Athletic Group to give athletes what the industry too often doesn&apos;t: passionate, honest and dependable representation, with personalized attention and a plan for the career and everything after it.
+                  {founder.bio[0]}
                 </p>
                 <span className="mt-8 inline-flex items-center gap-2">Read Shaheed&apos;s story <ArrowRight size={18} className="text-gold-deep transition-transform duration-500 group-hover:translate-x-1" /></span>
               </div>

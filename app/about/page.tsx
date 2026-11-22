@@ -5,6 +5,8 @@ import { ArrowRight, Check, Minus } from "lucide-react";
 import { MaskLines, Reveal } from "@/components/motion";
 import { AboutCTA } from "@/components/about-cta";
 import { site } from "@/lib/site";
+import { founder } from "@/lib/founder";
+import { FounderPortrait } from "@/components/founder-portrait";
 
 export const metadata: Metadata = {
   title: "About · Shaheed Samuel",
@@ -44,17 +46,7 @@ export default function AboutPage() {
       <section className="bg-paper py-24 text-obsidian sm:py-32" aria-labelledby="founder">
         <div className="wrap grid gap-14 lg:grid-cols-[0.9fr_1.1fr]">
           <Reveal className="relative">
-            <div className="relative aspect-[4/5] overflow-hidden bg-obsidian">
-              <Image src="/img/stadium-night.webp" alt="A stadium lit up at night" fill sizes="(min-width:1024px) 45vw, 100vw" className="object-cover opacity-70" />
-              <div className="absolute inset-0 bg-[linear-gradient(180deg,transparent_40%,rgba(9,9,11,0.9))]" />
-              <div className="absolute inset-x-8 bottom-8 text-paper">
-                <span className="display block text-[120px] leading-none text-gold">SS</span>
-                <span className="font-mono text-[11px] uppercase tracking-[0.2em]">Founder · Infinity Athletic Group</span>
-              </div>
-            </div>
-            <div className="absolute -right-3 -top-3 rounded-full bg-obsidian px-5 py-3 font-mono text-[11px] uppercase tracking-[0.2em] text-gold sm:-right-6">
-              NFLPA Certified · Since 2012
-            </div>
+            <FounderPortrait className="aspect-[4/5]" />
           </Reveal>
           <div>
             <p className="eyebrow mb-6 !text-gold-deep">Leadership</p>
@@ -64,9 +56,7 @@ export default function AboutPage() {
               &ldquo;Unboundedly formulating a blueprint for your professional athletic career and beyond.&rdquo;
             </blockquote>
             <div className="grid gap-5 text-[17px] leading-[1.75] text-obsidian/75">
-              <p>Based on extensive market research, Shaheed Samuel saw a clear need for sports agents who are passionate, honest and dependable. He believes his faith, wisdom, moral character, drive, work ethic and sense of loyalty set him apart from every competitor.</p>
-              <p>His philosophy is to empower each athlete&apos;s career path by helping them understand that they are the CEO of their own enterprise, and that being a professional athlete is an opportunity to expand into many other ventures in life.</p>
-              <p>His dedication, consistency and tireless work have built a proven track record for clients at the highest ethical levels. Shaheed and Infinity Athletic Group are personally dedicated to the success of every individual they accept the responsibility of representing, from NFL draft preparation to the business that comes after the game.</p>
+              {founder.bio.map((t) => <p key={t.slice(0, 24)}>{t}</p>)}
             </div>
             <ul className="mt-10 flex flex-wrap gap-2">
               {["Faith", "Wisdom", "Moral Character", "Drive", "Work Ethic", "Loyalty"].map((t) => (

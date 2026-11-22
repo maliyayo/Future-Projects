@@ -2,6 +2,7 @@
 
 import { motion, useScroll, useTransform, useReducedMotion } from "framer-motion";
 import { useRef } from "react";
+import { FounderPortrait } from "../founder-portrait";
 
 const quote = "Unboundedly formulating a blueprint for your professional athletic career and beyond.";
 
@@ -13,7 +14,8 @@ export function PullQuote() {
   return (
     <section ref={ref} className="relative overflow-hidden border-y hairline bg-carbon py-28 sm:py-40" aria-label="Founder's philosophy">
       <span aria-hidden className="pointer-events-none absolute -left-6 -top-24 font-serif text-[420px] leading-none text-gold/10">&ldquo;</span>
-      <div className="wrap relative">
+      <div className="wrap relative grid items-end gap-14 lg:grid-cols-[1.35fr_0.65fr]">
+        <div>
         <p className="eyebrow mb-10">The IAG Philosophy</p>
         <blockquote>
           <p className="display max-w-[22ch] text-[clamp(36px,5.4vw,88px)] italic leading-[1.02]">
@@ -33,6 +35,8 @@ export function PullQuote() {
           &ldquo;You are the CEO of your own enterprise. Being a professional athlete is an opportunity to expand into many other ventures in life.&rdquo;
           <span className="mt-2 block font-mono text-[11px] uppercase tracking-[0.2em] text-slate">The IAG philosophy, as Shaheed teaches it to every client</span>
         </p>
+        </div>
+        <FounderPortrait className="hidden aspect-[3/4] w-full lg:block" />
       </div>
     </section>
   );
