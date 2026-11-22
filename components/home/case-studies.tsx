@@ -38,21 +38,6 @@ const cases = [
       "Jacksonville drafted him in the fifth round in 2015. He caught a touchdown in his NFL debut and scored on a 73-yard punt return as a rookie.",
     ],
   },
-  {
-    id: "second-act",
-    athlete: "Rashad Greene",
-    slug: "rashad-greene",
-    tag: "Life Beyond the Game",
-    title: "The Second Act",
-    stat: "Degree + Business",
-    image: "/img/sprint-start.webp",
-    summary: "Finishing a degree and building a family business: the off-field blueprint, made real.",
-    body: [
-      "After the NFL, Greene went back to Florida State to complete his bachelor's degree in sport management, finishing in May 2020 with a 3.25 GPA in his major.",
-      "Florida State Athletics reported in 2020 that he and his wife, Jasmine, co-own All About Me Childcare, a Tallahassee business serving local families near Doak Campbell Stadium.",
-      "It's the 'CEO of your own enterprise' philosophy IAG brings to every client: the career is a chapter, not the whole book.",
-    ],
-  },
 ];
 
 export function CaseStudies() {
@@ -79,12 +64,12 @@ export function CaseStudies() {
           <Reveal className="max-w-md text-slate">Defining moments from IAG client careers, on the field and beyond it. All figures from public records.</Reveal>
         </div>
 
-        <div className="grid gap-6 md:grid-cols-3">
+        <div className="grid gap-6 md:grid-cols-2">
           {cases.map((c, i) => (
             <Reveal key={c.id} delay={i * 0.1}>
               <button onClick={() => setActive(c.id)} className="group block w-full text-left">
-                <motion.div layoutId={`case-img-${c.id}`} className="relative aspect-[3/4] overflow-hidden">
-                  <Image src={c.image} alt="" fill sizes="(min-width:768px) 33vw, 100vw" className="object-cover grayscale transition duration-[1200ms] ease-[cubic-bezier(.22,1,.36,1)] group-hover:scale-105 group-hover:grayscale-0" />
+                <motion.div layoutId={`case-img-${c.id}`} className="relative aspect-[4/3] overflow-hidden">
+                  <Image src={c.image} alt="" fill sizes="(min-width:768px) 50vw, 100vw" className="object-cover grayscale transition duration-[1200ms] ease-[cubic-bezier(.22,1,.36,1)] group-hover:scale-105 group-hover:grayscale-0" />
                   <div className="absolute inset-0 bg-[linear-gradient(180deg,transparent_40%,rgba(9,9,11,0.92))]" />
                   <span className="index-num absolute left-5 top-5 text-xs">0{i + 1}.</span>
                   <div className="absolute inset-x-5 bottom-5">
