@@ -26,7 +26,7 @@ export function Roster() {
         <div className="grid gap-6 lg:grid-cols-2">
           {athletes.map((a, i) => (
             <Reveal key={a.slug} delay={i * 0.12}>
-              <Link href={`/athletes/${a.slug}`} data-cursor="View" className="group relative block overflow-hidden border hairline bg-carbon">
+              <Link href={`/athletes/${a.slug}`} className="group relative block overflow-hidden border hairline bg-carbon">
                 <div className="relative aspect-[4/3] overflow-hidden sm:aspect-[16/11]">
                   <Image src={a.portrait} alt={a.portraitAlt} fill sizes="(min-width:1024px) 50vw, 100vw"
                     className="object-cover transition-transform duration-[1400ms] ease-[cubic-bezier(.22,1,.36,1)] group-hover:scale-110" style={{ objectPosition: a.heroFocus }} />

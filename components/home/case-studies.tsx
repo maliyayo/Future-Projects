@@ -82,7 +82,7 @@ export function CaseStudies() {
         <div className="grid gap-6 md:grid-cols-3">
           {cases.map((c, i) => (
             <Reveal key={c.id} delay={i * 0.1}>
-              <button onClick={() => setActive(c.id)} data-cursor="Read" className="group block w-full text-left">
+              <button onClick={() => setActive(c.id)} className="group block w-full text-left">
                 <motion.div layoutId={`case-img-${c.id}`} className="relative aspect-[3/4] overflow-hidden">
                   <Image src={c.image} alt="" fill sizes="(min-width:768px) 33vw, 100vw" className="object-cover grayscale transition duration-[1200ms] ease-[cubic-bezier(.22,1,.36,1)] group-hover:scale-105 group-hover:grayscale-0" />
                   <div className="absolute inset-0 bg-[linear-gradient(180deg,transparent_40%,rgba(9,9,11,0.92))]" />

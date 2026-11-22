@@ -73,5 +73,3 @@
 
 @keyframes marquee { to { transform: translateX(-50%); } }
 @keyframes spin-slow { to { transform: rotate(360deg); } }
-
-.has-cursor, .has-cursor * { cursor: none !important; }

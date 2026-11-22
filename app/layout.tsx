@@ -3,7 +3,6 @@ import { Cormorant_Garamond, Inter, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
-import { Cursor } from "@/components/cursor";
 import { InquiryProvider } from "@/components/inquiry";
 import { site } from "@/lib/site";
 
@@ -42,7 +41,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <Header />
           <main id="main">{children}</main>
           <Footer />
-          <Cursor />
         </InquiryProvider>
       </body>
     </html>

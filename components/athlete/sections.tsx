@@ -124,7 +124,7 @@ export function Media({ a }: { a: Athlete }) {
                 </figcaption>
               </figure>
             ) : (
-              <a href={m.href} target="_blank" rel="noopener noreferrer" data-cursor="Open"
+              <a href={m.href} target="_blank" rel="noopener noreferrer"
                 className="group flex h-full flex-col justify-between border hairline bg-obsidian p-6 transition-colors duration-500 hover:border-gold/60">
                 <span className="flex items-center justify-between font-mono text-[10px] uppercase tracking-[0.2em] text-gold">
                   {m.kind} · {m.source} <ArrowUpRight size={16} className="transition-transform duration-500 group-hover:rotate-45" />
@@ -165,7 +165,7 @@ export function BookingBar({ a }: { a: Athlete }) {
 
 export function NextAthlete({ next }: { next: Athlete }) {
   return (
-    <Link href={`/athletes/${next.slug}`} data-cursor="Next" className="group relative block overflow-hidden bg-obsidian">
+    <Link href={`/athletes/${next.slug}`} className="group relative block overflow-hidden bg-obsidian">
       <div className="absolute inset-0">
         <Image src={next.portrait} alt="" fill sizes="100vw" className="object-cover opacity-30 grayscale transition duration-[1400ms] ease-[cubic-bezier(.22,1,.36,1)] group-hover:scale-105 group-hover:opacity-60 group-hover:grayscale-0" style={{ objectPosition: next.heroFocus }} />
         <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(9,9,11,0.95),rgba(9,9,11,0.4))]" />
